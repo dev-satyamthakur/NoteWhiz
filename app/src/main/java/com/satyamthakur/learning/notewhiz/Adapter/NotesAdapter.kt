@@ -38,10 +38,25 @@ class NotesAdapter(private val context: Context):
         holder.date.text = note.date
         holder.date.isSelected = true
 
+        holder.notes_layout.setCardBackgroundColor(holder.itemView.resources.getColor(randomColor(),
+            null))
     }
 
     fun randomColor(): Int {
+        val colors = arrayListOf<Int>()
+        colors.add(R.color.note_color_1)
+        colors.add(R.color.note_color_2)
+        colors.add(R.color.note_color_3)
+        colors.add(R.color.note_color_4)
+        colors.add(R.color.note_color_5)
+        colors.add(R.color.note_color_6)
+        colors.add(R.color.note_color_7)
+        colors.add(R.color.note_color_8)
+        colors.add(R.color.note_color_9)
+        colors.add(R.color.note_color_10)
 
+        val random = (0..9).random()
+        return colors[random]
     }
 
 
