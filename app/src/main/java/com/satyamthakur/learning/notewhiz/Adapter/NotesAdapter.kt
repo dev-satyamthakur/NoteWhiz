@@ -11,7 +11,7 @@ import com.satyamthakur.learning.notewhiz.Models.Note
 import com.satyamthakur.learning.notewhiz.R
 import java.util.concurrent.RecursiveAction
 
-class NotesAdapter(private val context: Context):
+class NotesAdapter(private val context: Context, val listener: NotesClickListener):
     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
 
     private val notesList: ArrayList<Note>()
@@ -40,6 +40,15 @@ class NotesAdapter(private val context: Context):
 
         holder.notes_layout.setCardBackgroundColor(holder.itemView.resources.getColor(randomColor(),
             null))
+
+        holder.notes_layout.setOnClickListener {
+            listener.onitemClicked(notesList[holder.adapterPosition])
+        }
+
+        holder.notes_layout.setOnLongClickListener {
+            listener.onLongItemClicked(notesList[holder.adapterPosition], holder.notes_layout)
+            true
+        }
     }
 
     fun randomColor(): Int {
@@ -67,7 +76,10 @@ class NotesAdapter(private val context: Context):
         val note = itemView.findViewById<TextView>(R.id.tv_note)
         val date = itemView.findViewById<TextView>(R.id.tv_date)
 
+    }
 
-
+    interface NotesClickListener {
+        fun onitemClicked(note: Note)
+        fun onLongItemClicked(note: Note, cardView: CardView)
     }
 }
