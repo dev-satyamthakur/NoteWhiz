@@ -40,6 +40,10 @@ class NotesAdapter(private val context: Context):
 
     }
 
+    fun randomColor(): Int {
+
+    }
+
 
     inner class NotesViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 

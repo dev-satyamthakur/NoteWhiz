@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="note_color_1">#cdb4db</color>
+    <color name="note_color_2">#ffc8dd</color>
+    <color name="note_color_3">#bde0fe</color>
+    <color name="note_color_4">#a2d2ff</color>
+    <color name="note_color_5">#f5ebe0</color>
+    <color name="note_color_6">#e9edc9</color>
+    <color name="note_color_7">#ffddd2</color>
+    <color name="note_color_8">#ffcad4</color>
+    <color name="note_color_9">#c7f9cc</color>
+    <color name="note_color_10">#ade8f4</color>
 </resources>
