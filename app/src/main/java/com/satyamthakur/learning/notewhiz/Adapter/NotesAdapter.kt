@@ -14,8 +14,8 @@ import java.util.concurrent.RecursiveAction
 class NotesAdapter(private val context: Context, val listener: NotesClickListener):
     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
 
-    private val notesList: ArrayList<Note>()
-    private val fullList: ArrayList<Note>()
+    private val notesList = ArrayList<Note>()
+    private val fullList = ArrayList<Note>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
@@ -57,6 +57,19 @@ class NotesAdapter(private val context: Context, val listener: NotesClickListene
 
         notesList.clear()
         notesList.addAll(fullList)
+        notifyDataSetChanged()
+    }
+
+    fun filterList(search: String) {
+        notesList.clear()
+
+        for (item in fullList) {
+            if (item.title!!.lowercase().contains(search.lowercase()) ||
+                item.note!!.lowercase().contains(search.lowercase())) {
+                notesList.add(item)
+            }
+        }
+
         notifyDataSetChanged()
     }
 
