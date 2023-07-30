@@ -51,6 +51,15 @@ class NotesAdapter(private val context: Context, val listener: NotesClickListene
         }
     }
 
+    fun updateList(newList: List<Note>) {
+        fullList.clear()
+        fullList.addAll(newList)
+
+        notesList.clear()
+        notesList.addAll(fullList)
+        notifyDataSetChanged()
+    }
+
     fun randomColor(): Int {
         val colors = arrayListOf<Int>()
         colors.add(R.color.note_color_1)
