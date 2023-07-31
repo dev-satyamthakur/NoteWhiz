@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.widget.LinearLayout
 import android.widget.PopupMenu
 import android.widget.SearchView
@@ -60,6 +61,22 @@ class MainActivity : AppCompatActivity(), NotesAdapter.NotesClickListener, Popup
         }
 
         database = NoteDatabase.getDatabase(this)
+
+        // removing edit text focus
+        binding.recyclerView.setOnTouchListener { v, event ->
+            // Check if the touch event is outside the SearchView
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                val x = event.x.toInt()
+                val y = event.y.toInt()
+                if (x < binding.searchView.left || x > binding.searchView.right
+                    || y < binding.searchView.top || y > binding.searchView.bottom) {
+                    // Clear focus from the SearchView's EditText
+                    binding.searchView.clearFocus()
+                }
+            }
+
+            false // Return false to allow other touch events to be triggered
+        }
     }
 
     private fun initUi() {
