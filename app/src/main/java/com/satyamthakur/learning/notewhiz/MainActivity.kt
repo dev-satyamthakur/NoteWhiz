@@ -16,6 +16,7 @@ import com.satyamthakur.learning.notewhiz.Adapter.NotesAdapter
 import com.satyamthakur.learning.notewhiz.Database.NoteDatabase
 import com.satyamthakur.learning.notewhiz.Models.Note
 import com.satyamthakur.learning.notewhiz.Models.NoteViewModel
+import com.satyamthakur.learning.notewhiz.Utils.UniformItemDecorator
 import com.satyamthakur.learning.notewhiz.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), NotesAdapter.NotesClickListener, PopupMenu.OnMenuItemClickListener {
@@ -64,6 +65,7 @@ class MainActivity : AppCompatActivity(), NotesAdapter.NotesClickListener, Popup
     private fun initUi() {
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, LinearLayout.VERTICAL)
+        binding.recyclerView.addItemDecoration(UniformItemDecorator(24))
         adapter = NotesAdapter(this, this)
         binding.recyclerView.adapter = adapter
 
